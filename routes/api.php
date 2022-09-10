@@ -14,10 +14,17 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// Resource route
+Route::resource('products', ProductController::class);
 
-Route::get('/products',[ProductController::class, 'index']);
+// Search API
+Route::get('/products/search/{name}',[ProductController::class, 'search']);
 
-Route::post('/products',[ProductController::class, 'store']);
+// old code
+// Route::get('/products',[ProductController::class, 'index']);
+// Route::post('/products',[ProductController::class, 'store']);
+// Route::get('/products/{id}',[ProductController::class, 'show']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
